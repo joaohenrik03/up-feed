@@ -5,6 +5,13 @@ import { Post } from './components/Post/Post';
 import styles from './App.module.css';
 
 export function App() {
+  const user = {
+    userName: 'Eu',
+    avatarUrl: 'https://www.anagiorgiani.com/static/media/react.7c70f30f.png',
+    backgroundUrl: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
+    role: 'Visitante',
+  }
+
   const posts = [
     {
       id: 1,
@@ -55,7 +62,12 @@ export function App() {
       <Header />
 
       <div className={styles.wrapper}>
-        <SideBar /> 
+        <SideBar 
+          userName={user.userName}
+          avatarUrl={user.avatarUrl}
+          role={user.role}
+          backgroundUrl={user.backgroundUrl}
+        /> 
 
         <main>
           {
@@ -66,6 +78,8 @@ export function App() {
                   author={post.author}
                   publishedIn={post.publishedIn}
                   postContent={post.postContent}
+                  userName={user.userName}
+                  avatarUrl={user.avatarUrl}
                 />    
               )
             })

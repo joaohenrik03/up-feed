@@ -8,9 +8,11 @@ import styles from './Comments.module.css';
 type CommentsProps = {
     content: string;
     onDeleteComment: (content: string) => void;
+    userName: string;
+    avatarUrl: string;
 };
 
-export function Comments({ content, onDeleteComment}: CommentsProps) {
+export function Comments({ content, onDeleteComment, userName, avatarUrl }: CommentsProps) {
     function handleDeleteComment() {
         onDeleteComment(content);
     };
@@ -25,14 +27,14 @@ export function Comments({ content, onDeleteComment}: CommentsProps) {
         <div className={styles.comment}>
            <Avatar 
                 hasBorder={false} 
-                src="https://avatars.githubusercontent.com/u/84729916?v=4" 
+                src={avatarUrl}
             />
 
             <div className={styles.commentContainer}>
                 <div className={styles.commentBox}>
                     <header>
                         <div className={styles.authorAndTime}>
-                            <strong>João Henrik</strong>
+                            <strong>{userName}</strong>
                             <time dateTime='2022-07-21 15:46:12' title='21 de Julho de 20221, às 15:46h'>
                                 Cerca de 1h atrás
                             </time>

@@ -19,9 +19,11 @@ type PostProps = {
         type: string;
         content: string;
     }>;
+    userName: string;
+    avatarUrl: string;
 };
 
-export function Post({ author, publishedIn, postContent}: PostProps) {
+export function Post({ author, publishedIn, postContent, userName, avatarUrl}: PostProps) {
     const formattedPublicationDate = format(publishedIn, "d 'de' LLLL 'de' uuuu',' 'às' HH:mm'h'", {
         locale: ptBR,
     });
@@ -120,6 +122,8 @@ export function Post({ author, publishedIn, postContent}: PostProps) {
                                 content={comment} 
                                 key={comment} 
                                 onDeleteComment={deleteComment} 
+                                userName={userName}
+                                avatarUrl={avatarUrl}
                             />
                         )                 
                     })    
