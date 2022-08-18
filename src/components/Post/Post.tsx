@@ -51,6 +51,8 @@ export function Post({ author, publishedIn, postContent}: PostProps) {
         setComments(newCommentsList);
     };
 
+    const isDisabled = newCommentText.length === 0;
+
     return (
         <article className={styles.post}>
             <header>
@@ -99,6 +101,7 @@ export function Post({ author, publishedIn, postContent}: PostProps) {
                 <footer>
                     <button 
                         type='submit' 
+                        disabled={isDisabled}
                     >
                         Publicar
                     </button>    
