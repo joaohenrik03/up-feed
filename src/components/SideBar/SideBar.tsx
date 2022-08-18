@@ -3,21 +3,28 @@ import { Avatar } from "../Avatar/Avatar";
 
 import styles from './SideBar.module.css';
 
-export function SideBar() {
+type SideBarProps = {
+    userName: string;
+    avatarUrl: string; 
+    role: string;
+    backgroundUrl: string;
+};
+
+export function SideBar({ userName, avatarUrl, role, backgroundUrl}: SideBarProps) {
     return (
         <aside className={styles.sidebar}>
             <img 
                 className={styles.cover}
-                src="https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=50" 
+                src={backgroundUrl} 
             />     
 
             <div className={styles.profile}>
                 <Avatar 
-                    src="https://avatars.githubusercontent.com/u/84729916?v=4"
+                    src={avatarUrl}
                 />
 
-                <strong>João Henrik</strong>
-                <span>Estudante</span>
+                <strong>{userName}</strong>
+                <span>{role}</span>
             </div>
 
             <footer>
