@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { formatDistanceToNow } from "date-fns";
+import ptBR from "date-fns/locale/pt-BR";
 
 import { ThumbsUp, Trash } from "phosphor-react";
 import { Avatar } from "../Avatar/Avatar";
@@ -13,6 +15,13 @@ type CommentsProps = {
 };
 
 export function Comments({ content, onDeleteComment, userName, avatarUrl }: CommentsProps) {
+    const commentPublishedIn = new Date();
+
+    const publicationDateRelativeToNow = formatDistanceToNow(commentPublishedIn, {
+        locale: ptBR,
+        addSuffix: true,
+    });
+
     function handleDeleteComment() {
         onDeleteComment(content);
     };
@@ -36,7 +45,7 @@ export function Comments({ content, onDeleteComment, userName, avatarUrl }: Comm
                         <div className={styles.authorAndTime}>
                             <strong>{userName}</strong>
                             <time dateTime='2022-07-21 15:46:12' title='21 de Julho de 20221, às 15:46h'>
-                                Cerca de 1h atrás
+                                {publicationDateRelativeToNow}
                             </time>
                         </div>
 
