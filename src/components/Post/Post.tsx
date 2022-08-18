@@ -81,7 +81,11 @@ export function Post({ author, publishedIn, postContent}: PostProps) {
                         if (textContent.type === 'paragraph') {
                             return <p key={textContent.content}>{textContent.content}</p>
                         } else if ((textContent.type === 'link')) {
-                            return <p key={textContent.content}><a target="_blank" href={textContent.content}>{textContent.content}</a></p>
+                            return (
+                                <p key={textContent.content}>
+                                    <a target="_blank" href={textContent.content}>{textContent.content}</a>
+                                </p>
+                            )
                         }
                     })
                 }
