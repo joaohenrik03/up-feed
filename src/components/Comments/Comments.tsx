@@ -1,0 +1,61 @@
+import { useState } from "react";
+
+import { ThumbsUp, Trash } from "phosphor-react";
+import { Avatar } from "../Avatar/Avatar";
+
+import styles from './Comments.module.css';
+
+type CommentsProps = {
+    content: string;
+    onDeleteComment: (content: string) => void;
+};
+
+export function Comments({ content, onDeleteComment}: CommentsProps) {
+    function handleDeleteComment() {
+        onDeleteComment(content);
+    };
+
+    const [applauseCounter, setApplauseCounter] = useState<number>(0);
+
+    function applaudComment() {
+        setApplauseCounter(applauseCounter + 1);
+    };
+
+    return (
+        <div className={styles.comment}>
+           <Avatar 
+                hasBorder={false} 
+                src="https://avatars.githubusercontent.com/u/84729916?v=4" 
+            />
+
+            <div className={styles.commentContainer}>
+                <div className={styles.commentBox}>
+                    <header>
+                        <div className={styles.authorAndTime}>
+                            <strong>João Henrik</strong>
+                            <time dateTime='2022-07-21 15:46:12' title='21 de Julho de 20221, às 15:46h'>
+                                Cerca de 1h atrás
+                            </time>
+                        </div>
+
+                        <button onClick={handleDeleteComment} title='Deletar comentário'>
+                            <Trash size={24} />
+                        </button>
+                    </header>
+
+                    <p>
+                        {content}
+                    </p>
+                </div>
+
+                <footer>
+                    <button onClick={applaudComment}>
+                        <ThumbsUp size={32} />
+                        Aplaudir
+                        <span>{applauseCounter}</span>
+                    </button>
+                </footer>
+            </div> 
+        </div>
+    )
+}
