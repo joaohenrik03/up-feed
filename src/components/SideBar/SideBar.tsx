@@ -17,7 +17,7 @@ export function SideBar() {
                 />
 
                 <strong>João Henrik</strong>
-                <span>Junior</span>
+                <span>Estudante</span>
             </div>
 
             <footer>
